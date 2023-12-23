@@ -1,8 +1,8 @@
 This is a [Next.js](https://nextjs.org/) blog using [Notions Public API](https://developers.notion.com).
 
-__Demo:__ [https://notion-blog-nextjs-coral.vercel.app](https://notion-blog-nextjs-coral.vercel.app)
+**Demo:** [https://notion-blog-nextjs-coral.vercel.app](https://notion-blog-nextjs-coral.vercel.app)
 
-__How-it-works/Documentation:__ [https://samuelkraft.com/blog/building-a-notion-blog-with-public-api](https://samuelkraft.com/blog/building-a-notion-blog-with-public-api)
+**How-it-works/Documentation:** [https://samuelkraft.com/blog/building-a-notion-blog-with-public-api](https://samuelkraft.com/blog/building-a-notion-blog-with-public-api)
 
 ## Getting Started
 
@@ -36,5 +36,15 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 #### Deploy to vercel
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fsamuelkraft%2Fnotion-blog-nextjs&env=NOTION_TOKEN,NOTION_DATABASE_ID&envDescription=Please%20add%20NOTION_TOKEN%20and%20NOTION_DATABASE_ID%20that%20is%20required%20to%20connect%20the%20blog%20to%20your%20notion%20account.&envLink=https%3A%2F%2Fdevelopers.notion.com%2Fdocs%2Fgetting-started&project-name=notion-blog-nextjs&repo-name=notion-blog-nextjs&demo-title=Notion%20Blog%20Next%20JS&demo-description=%20This%20is%20a%20Next.js%20blog%20using%20Notions%20Public%20API.&demo-url=notion-blog-nextjs-coral.vercel.app)
+
 # notion-blog-template
+
 # notion-blog-template
+
+git remote set-url origin https://github.com/SHUN-EV/Notion_Blog_Nextjs.git
+
+git remote -v
+main git remote set-url origin https://github.com/SHUN-EV/Notion_Blog_Nextjs.git (fetch)
+main git remote set-url origin https://github.com/SHUN-EV/Notion_Blog_Nextjs.git (push)
+origin https://github.com/Shin-sibainu/notion-blog-template.git (fetch)
+origin https://github.com/Shin-sibainu/notion-blog-template.git (push)
