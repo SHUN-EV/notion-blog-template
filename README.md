@@ -41,10 +41,14 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 # notion-blog-template
 
-git remote set-url origin https://github.com/SHUN-EV/Notion_Blog_Nextjs.git
+git remote set-url main https://github.com/SHUN-EV/Notion_Blog_Nextjs.git
 
 git remote -v
 main git remote set-url origin https://github.com/SHUN-EV/Notion_Blog_Nextjs.git (fetch)
 main git remote set-url origin https://github.com/SHUN-EV/Notion_Blog_Nextjs.git (push)
 origin https://github.com/Shin-sibainu/notion-blog-template.git (fetch)
 origin https://github.com/Shin-sibainu/notion-blog-template.git (push)
+
+git add .
+
+git commit -m "done"
