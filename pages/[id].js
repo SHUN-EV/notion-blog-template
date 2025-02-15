@@ -1,7 +1,7 @@
 import { Fragment } from "react";
-import Head from "next/head";
-import { getDatabase, getPage, getBlocks } from "../lib/notion";
-import Link from "next/link";
+import Head from "next/head.js";
+import { getDatabase, getPage, getBlocks } from "../lib/notion.js";
+import Link from "next/link.js";
 import { databaseId } from "./index.js";
 import styles from "./post.module.css";
 
@@ -36,21 +36,13 @@ const renderNestedList = (block) => {
   const value = block[type];
   if (!value) return null;
 
-  const isNumberedList = value.children[0].type === 'numbered_list_item'
+  const isNumberedList = value.children[0].type === "numbered_list_item";
 
   if (isNumberedList) {
-    return (
-      <ol>
-        {value.children.map((block) => renderBlock(block))}
-      </ol>
-    )
+    return <ol>{value.children.map((block) => renderBlock(block))}</ol>;
   }
-  return (
-    <ul>
-      {value.children.map((block) => renderBlock(block))}
-    </ul>
-  )
-}
+  return <ul>{value.children.map((block) => renderBlock(block))}</ul>;
+};
 
 const renderBlock = (block) => {
   const { type, id } = block;
@@ -151,10 +143,10 @@ const renderBlock = (block) => {
         </figure>
       );
     case "bookmark":
-      const href = value.url
+      const href = value.url;
       return (
-        <a href={ href } target="_brank" className={styles.bookmark}>
-          { href }
+        <a href={href} target="_brank" className={styles.bookmark}>
+          {href}
         </a>
       );
     default:

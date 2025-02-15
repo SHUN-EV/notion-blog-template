@@ -1,6 +1,6 @@
-import Head from "next/head";
-import Link from "next/link";
-import { getDatabase } from "../lib/notion";
+import Head from "next/head.js";
+import Link from "next/link.js";
+import { getDatabase } from "../lib/notion.js";
 import { Text } from "./[id].js";
 import styles from "./index.module.css";
 
@@ -49,7 +49,7 @@ export default function Home({ posts }) {
           </div>
           <h1>Next.js + Notion API ブログ</h1>
           <p>
-           Notionと連携しているブログです。Notionに書き込めばそのままブログとして投稿できます。
+            Notionと連携しているブログです。Notionに書き込めばそのままブログとして投稿できます。
           </p>
         </header>
 
@@ -87,5 +87,118 @@ export default function Home({ posts }) {
   );
 }
 
-//SSGを追加
+//SSGではなくISRを追加
+export const getStaticProps = async () => {
+  const database = await getDatabase(databaseId);
 
+  return {
+    props: {
+      posts: database,
+    },
+    revalidate: 1, //1秒で再生成されるように設定 10秒でもよい
+  };
+};
+
+// npm run dev ローカルサーバーを再構築する
+// npm ERR! code ENOENT
+// npm ERR! syscall open
+// npm ERR! path /Users/kclover/VSCODE/SHinweb/package.json
+// npm ERR! errno -2
+// npm ERR! enoent Could not read package.json: Error: ENOENT: no such file or directory, open '/Users/kclover/VSCODE/SHinweb/package.json'
+// npm ERR! enoent This is related to npm not being able to find a file.
+// npm ERR! enoent
+
+// npm ERR! A complete log of this run can be found in: /Users/kclover/.npm/_logs/2023-12-24T07_37_47_907Z-debug-0.log
+
+// npm ERR! code ENOENT
+// npm ERR! syscall open
+// npm ERR! path /Users/kclover/VSCODE/SHinweb/package.json
+// npm ERR! errno -2
+// npm ERR! enoent Could not read package.json: Error: ENOENT: no such file or directory, open '/Users/kclover/VSCODE/SHinweb/package.json'
+// npm ERR! enoent This is related to npm not being able to find a file.
+// npm ERR! enoent
+
+// npm ERR! A complete log of this run can be found in: /Users/kclover/.npm/_logs/2023-12-24T07_40_50_116Z-debug-0.log
+
+// npm ERR! code ENOENT エラーは、package.json ファイルが見つからないことに関連するエラーです。通常、package.json ファイルはプロジェクトのルートディレクトリに存在する必要があります。
+
+// このエラーを解決するためには、以下の手順を確認してください。
+
+// カレントディレクトリの確認: npm i コマンドを実行する前に、プロジェクトのルートディレクトリ（package.json が存在する場所）に移動していることを確認してください。正しいディレクトリに移動してから npm i を実行してください。
+
+// package.json ファイルの存在確認: プロジェクトディレクトリに package.json ファイルが存在するかどうかを確認してください。もし存在しない場合は、新しいプロジェクトを初期化する必要があります。npm init コマンドを使用して新しい package.json ファイルを作成できます。
+
+// npm init
+// パスの確認: エラーメッセージに表示されているパス /Users/kclover/VSCODE/SHinweb/package.json に package.json ファイルが存在することを確認してください。もしパスが間違っている場合は、正しいパスに cd コマンドで移動してください。
+
+// これらの手順を確認して、npm i を正常に実行できるようにしてください。
+
+// .gitignoreに/node_modulesがあることを確認する
+
+// lsof -i :3000 3000ポートがどう使用されているかを確認する
+
+// COMMAND   PID    USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+// node    21158 kclover   19u  IPv6 0x763e7d0e66c3970f      0t0  TCP *:hbci (LISTEN)
+
+// kill -9 2115して前の3000との接続を消して、新たに接続する
+// npm run dev
+// > nextjs@0.1.0 dev
+// > next dev
+
+// ready - started server on 0.0.0.0:3000, url: http://localhost:3000
+// info  - Loaded env from /Users/kclover/VSCODE/SHinweb/Notion_Blog_Nextjs/.env
+// Browserslist: caniuse-lite is outdated. Please run:
+// npx browserslist@latest --update-db
+
+// Why you should do it regularly:
+// https://github.com/browserslist/browserslist#browsers-data-updating
+// event - compiled successfully in 1547 ms (172 modules)
+
+// > nextjs@0.1.0 dev
+// > next dev
+
+// ready - started server on 0.0.0.0:3000, url: http://localhost:3000
+// info  - Loaded env from /Users/kclover/VSCODE/SHinweb/Notion_Blog_Nextjs/.env
+// Browserslist: caniuse-lite is outdated. Please run:
+// npx browserslist@latest --update-db
+
+// Why you should do it regularly:
+// https://github.com/browserslist/browserslist#browsers-data-updating
+// event - compiled successfully in 969 ms (172 modules)
+// wait  - compiling /...
+// event - compiled successfully in 109 ms (191 modules)
+// wait  - compiling /_error...
+// event - compiled successfully in 49 ms (192 modules)
+// error - pages/index.js (72:55) @ eval
+// TypeError: Cannot read properties of undefined (reading 'title')
+//   70 |                   <Link href={`/${post.id}`}>
+//   71 |                     <a>
+// > 72 |                       <Text text={post.properties.Name.title} />
+//      |                                                       ^
+//   73 |                     </a>
+//   74 |                   </Link>
+//   75 |                 </h3>
+// wait  - compiling...
+// event - compiled successfully in 82 ms (173 modules)
+// wait  - compiling /...
+// event - compiled successfully in 246 ms (192 modules)
+// wait  - compiling /_error...
+// event - compiled successfully in 47 ms (192 modules)
+// error - pages/index.js (72:55) @ eval
+// TypeError: Cannot read properties of undefined (reading 'title')
+//   70 |                   <Link href={`/${post.id}`}>
+//   71 |                     <a>
+// > 72 |                       <Text text={post.properties.Name.title} />
+//      |                                                       ^
+//   73 |                     </a>
+//   74 |                   </Link>
+//   75 |                 </h3>
+// error - pages/index.js (72:55) @ eval
+// TypeError: Cannot read properties of undefined (reading 'title')
+//   70 |                   <Link href={`/${post.id}`}>
+//   71 |                     <a>
+// > 72 |                       <Text text={post.properties.Name.title} />
+//      |                                                       ^
+//   73 |                     </a>
+//   74 |                   </Link>
+//   75 |                 </h3>

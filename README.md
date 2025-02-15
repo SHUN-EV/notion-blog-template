@@ -52,3 +52,5 @@ origin https://github.com/Shin-sibainu/notion-blog-template.git (push)
 git add .
 
 git commit -m "done"
+
+git push main main
